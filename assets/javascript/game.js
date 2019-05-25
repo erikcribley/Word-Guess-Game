@@ -16,4 +16,4 @@ function randomWord () {
     return words[Math.floor(Math.random() * words.length)];
 }
 
-
+document.getElementById("word-display").innerHTML = randomWord()
