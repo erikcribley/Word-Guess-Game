@@ -12,8 +12,15 @@ var words = [
     "wizard",
     "warlock",]
 
+var wins = 0;
+
+var wordDisplay = document.getElementById("word-display")
+var winCount = document.getElementById("win-count")
+var guessesLeft = document.getElementById("guesses-left")
+var lettersGuessed = document.getElementById("letters-guessed")
+
 function randomWord () {
     return words[Math.floor(Math.random() * words.length)];
 }
 
-document.getElementById("word-display").innerHTML = randomWord()
+wordDisplay.innerHTML = randomWord()
