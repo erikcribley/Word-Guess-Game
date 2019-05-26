@@ -14,6 +14,8 @@ var words = [
 
 var wins = 0;
 var blankSpace = [];
+var guesses = 6;
+var lettersUsed = [];
 
 var wordDisplay = document.getElementById("word-display")
 var winCount = document.getElementById("win-count")
@@ -28,9 +30,17 @@ var characters = randomWord().split('')
 
 function blanks () {
     for (i = 0; i < characters.length; i++) {
-        blankSpace.push('_')
+        blankSpace.push('_ ')
     }
     return blankSpace;
 }
- 
+
 wordDisplay.innerHTML = blanks()
+
+document.onkeyup = function(event) {
+    var userInput = event.key;
+    var guess = (characters.indexOf(userInput))
+    console.log(guess)
+}
+
+//will retun value of letter guessed or negative 1
