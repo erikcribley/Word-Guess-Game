@@ -24,3 +24,7 @@ function randomWord () {
 }
 
 wordDisplay.innerHTML = randomWord()
+
+var characters = randomWord().split('')
+
+console.log(characters)
