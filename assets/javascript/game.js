@@ -13,6 +13,7 @@ var words = [
     "warlock",]
 
 var wins = 0;
+var blankSpace = [];
 
 var wordDisplay = document.getElementById("word-display")
 var winCount = document.getElementById("win-count")
@@ -25,5 +26,11 @@ function randomWord () {
 
 var characters = randomWord().split('') 
 
-wordDisplay.innerHTML = characters
-
+function blanks () {
+    for (i = 0; i < characters.length; i++) {
+        blankSpace.push('_')
+    }
+    return blankSpace;
+}
+ 
+wordDisplay.innerHTML = blanks()
