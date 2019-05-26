@@ -23,8 +23,7 @@ function randomWord () {
     return words[Math.floor(Math.random() * words.length)];
 }
 
-wordDisplay.innerHTML = randomWord()
+var characters = randomWord().split('') 
 
-var characters = randomWord().split('')
+wordDisplay.innerHTML = characters
 
-console.log(characters)
