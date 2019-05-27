@@ -15,32 +15,26 @@ var words = [
 var wins = 0;
 var blankSpace = [];
 var guesses = 6;
-var lettersUsed = [];
+var rightLetter = [];
+var wrongLetter = [];
+
 
 var wordDisplay = document.getElementById("word-display")
 var winCount = document.getElementById("win-count")
 var guessesLeft = document.getElementById("guesses-left")
 var lettersGuessed = document.getElementById("letters-guessed")
 
-function randomWord () {
-    return words[Math.floor(Math.random() * words.length)];
-}
+var randomWord = words[Math.floor(Math.random() * words.length)];
 
-var characters = randomWord().split('') 
-
-function blanks () {
-    for (i = 0; i < characters.length; i++) {
-        blankSpace.push('_ ')
+var blanks = [];
+    for (i = 0; i < randomWord.length; i++) {
+        blanks[i] = ('_')
     }
-    return blankSpace;
-}
 
-wordDisplay.innerHTML = blanks()
+wordDisplay.innerHTML = blanks
 
 document.onkeyup = function(event) {
     var userInput = event.key;
-    var guess = (characters.indexOf(userInput))
-    console.log(guess)
 }
 
-//will retun value of letter guessed or negative 1
+console.log(randomWord)
