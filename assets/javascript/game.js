@@ -15,7 +15,7 @@ var words = [
 
 //Establish global vairiables
 var wins = 0;
-var guesses = 6;
+var remainingGuesses = 6 
 var rightLetter = [];
 var wrongLetter = [];
 
@@ -34,16 +34,23 @@ var blanks = [];
     }
 
 document.onkeyup = function(event) {
+    var lettersRemaining = randomWord.length
     var guess = event.key
     for (i = 0; i < randomWord.length; i++) {
-        if (guess === randomWord[i]) {
-           blanks[i] = guess
-        } 
-        wordDisplay.innerHTML = blanks 
-    }
-}
+    if (guess === randomWord[i]) {
+       blanks[i] = guess;
+    }} 
 
-wordDisplay.innerHTML = blanks 
-winCount.innerHTML = wins
-guessesLeft.innerHTML = guesses
+
+
+
+wordDisplay.innerHTML = blanks.join(' ')
+guessesLeft.innerHTML = remainingGuesses
 lettersGuessed.innerHTML = wrongLetter
+winCount.innerHTML = wins
+}      
+
+wordDisplay.innerHTML = blanks.join(' ')
+guessesLeft.innerHTML = remainingGuesses
+lettersGuessed.innerHTML = wrongLetter
+winCount.innerHTML = wins
