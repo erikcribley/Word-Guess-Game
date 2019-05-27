@@ -27,6 +27,8 @@ var lettersGuessed = document.getElementById("letters-guessed")
 //Choose word at random
 var randomWord = words[Math.floor(Math.random() * words.length)];
 
+var lettersRemaining = randomWord.length
+
 //Display word with underscores
 var blanks = [];
     for (i = 0; i < randomWord.length; i++) {
@@ -34,23 +36,28 @@ var blanks = [];
     }
 
 document.onkeyup = function(event) {
-    var lettersRemaining = randomWord.length
     var guess = event.key
+    if (randomWord.indexOf(guess) > -1 ) {
     for (i = 0; i < randomWord.length; i++) {
-    if (guess === randomWord[i]) {
-       blanks[i] = guess;
-    }} 
+       if (guess === randomWord[i]) { 
+        blanks[i] = guess;
+        lettersRemaining--;
+    } }
+  } else {
+      remainingGuesses--;
+      wrongLetter.push(guess)
+  }
 
-
+console.log(lettersRemaining)
 
 
 wordDisplay.innerHTML = blanks.join(' ')
 guessesLeft.innerHTML = remainingGuesses
-lettersGuessed.innerHTML = wrongLetter
+lettersGuessed.innerHTML = wrongLetter.join(' ')
 winCount.innerHTML = wins
 }      
 
 wordDisplay.innerHTML = blanks.join(' ')
 guessesLeft.innerHTML = remainingGuesses
-lettersGuessed.innerHTML = wrongLetter
+lettersGuessed.innerHTML = wrongLetter.join(' ')
 winCount.innerHTML = wins
