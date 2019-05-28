@@ -34,6 +34,7 @@ var blanks = [];
         blanks[i] = ('_')
     }
 
+//Game
 document.onkeyup = function(event) {
     var guess = event.key
     if (randomWord.indexOf(guess) > -1 ) {
