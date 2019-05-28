@@ -48,7 +48,24 @@ document.onkeyup = function(event) {
   } 
   if (lettersRemaining === 0) {
     wins++;
-  } 
+    remainingGuesses = 6;
+    wrongLetter = [];
+    randomWord = words[Math.floor(Math.random() * words.length)];
+    blanks = [];
+    for (i = 0; i < randomWord.length; i++) {
+    blanks[i] = ('_')
+    }
+    lettersRemaining = randomWord.length
+    } else if (remainingGuesses=== 0) {
+    remainingGuesses = 6;
+    wrongLetter = [];
+    randomWord = words[Math.floor(Math.random() * words.length)];
+    blanks = [];
+    for (i = 0; i < randomWord.length; i++) {
+    blanks[i] = ('_')
+    }
+    lettersRemaining = randomWord.length
+    }
 
 wordDisplay.innerHTML = blanks.join(' ')
 guessesLeft.innerHTML = remainingGuesses
@@ -59,19 +76,4 @@ winCount.innerHTML = wins
 wordDisplay.innerHTML = blanks.join(' ')
 guessesLeft.innerHTML = remainingGuesses
 lettersGuessed.innerHTML = wrongLetter.join(' ')
-winCount.innerHTML = wins
-
-// function reset() {
-//     remainingGuesses = 6;
-//     wrongLetter = [];
-//     randomWord = words[Math.floor(Math.random() * words.length)];
-//     blanks = [];
-//     for (i = 0; i < randomWord.length; i++) {
-//         blanks[i] = ('_')
-//     }
-//     lettersRemaining = randomWord.length
-// }    
-
-// if (lettersRemaining === 0) {
-//     wins++;
-// }
+winCount.innerHTML = wins 
