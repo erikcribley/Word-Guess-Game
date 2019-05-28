@@ -16,7 +16,6 @@ var words = [
 //Establish global vairiables
 var wins = 0;
 var remainingGuesses = 6 
-var rightLetter = [];
 var wrongLetter = [];
 
 var wordDisplay = document.getElementById("word-display")
@@ -46,18 +45,33 @@ document.onkeyup = function(event) {
   } else {
       remainingGuesses--;
       wrongLetter.push(guess)
-  }
-
-console.log(lettersRemaining)
-
-
-wordDisplay.innerHTML = blanks.join(' ')
-guessesLeft.innerHTML = remainingGuesses
-lettersGuessed.innerHTML = wrongLetter.join(' ')
-winCount.innerHTML = wins
-}      
+  } 
+  if (lettersRemaining === 0) {
+    wins++;
+  } 
 
 wordDisplay.innerHTML = blanks.join(' ')
 guessesLeft.innerHTML = remainingGuesses
 lettersGuessed.innerHTML = wrongLetter.join(' ')
 winCount.innerHTML = wins
+}  
+
+wordDisplay.innerHTML = blanks.join(' ')
+guessesLeft.innerHTML = remainingGuesses
+lettersGuessed.innerHTML = wrongLetter.join(' ')
+winCount.innerHTML = wins
+
+// function reset() {
+//     remainingGuesses = 6;
+//     wrongLetter = [];
+//     randomWord = words[Math.floor(Math.random() * words.length)];
+//     blanks = [];
+//     for (i = 0; i < randomWord.length; i++) {
+//         blanks[i] = ('_')
+//     }
+//     lettersRemaining = randomWord.length
+// }    
+
+// if (lettersRemaining === 0) {
+//     wins++;
+// }
