@@ -13,19 +13,22 @@ var words = [
     "wizard",
     "warlock",]
 
-//Establish global vairiables
+//Establish global variables
 var wins = 0;
 var remainingGuesses = 6 
 var wrongLetter = [];
 
+//HTML variables
 var wordDisplay = document.getElementById("word-display")
-var winCount = document.getElementById("win-count")
-var guessesLeft = document.getElementById("guesses-left")
-var lettersGuessed = document.getElementById("letters-guessed")
+var winCount = document.getElementById("wins")
+var guessesLeft = document.getElementById("remaining-guesses")
+var lettersGuessed = document.getElementById("wrong-letter")
+var hidePrompt = document.getElementById("hide-prompt")
 
 //Choose word at random
 var randomWord = words[Math.floor(Math.random() * words.length)];
 
+//Set variable relevent to randomWord
 var lettersRemaining = randomWord.length
 
 //Display word with underscores
@@ -34,7 +37,20 @@ var blanks = [];
         blanks[i] = ('_')
     }
 
+//Reset function
+function reset () {
+    remainingGuesses = 6;
+    wrongLetter = [];
+    randomWord = words[Math.floor(Math.random() * words.length)];
+    blanks = [];
+    for (i = 0; i < randomWord.length; i++) {
+    blanks[i] = ('_')
+    }
+    lettersRemaining = randomWord.length
+}
+
 //Game
+function game () {
 document.onkeyup = function(event) {
     var guess = event.key
     if (randomWord.indexOf(guess) > -1 ) {
@@ -49,23 +65,9 @@ document.onkeyup = function(event) {
   } 
   if (lettersRemaining === 0) {
     wins++;
-    remainingGuesses = 6;
-    wrongLetter = [];
-    randomWord = words[Math.floor(Math.random() * words.length)];
-    blanks = [];
-    for (i = 0; i < randomWord.length; i++) {
-    blanks[i] = ('_')
-    }
-    lettersRemaining = randomWord.length
+    reset()
     } else if (remainingGuesses=== 0) {
-    remainingGuesses = 6;
-    wrongLetter = [];
-    randomWord = words[Math.floor(Math.random() * words.length)];
-    blanks = [];
-    for (i = 0; i < randomWord.length; i++) {
-    blanks[i] = ('_')
-    }
-    lettersRemaining = randomWord.length
+    reset()
     }
 
 wordDisplay.innerHTML = blanks.join(' ')
@@ -73,8 +75,15 @@ guessesLeft.innerHTML = remainingGuesses
 lettersGuessed.innerHTML = wrongLetter.join(' ')
 winCount.innerHTML = wins
 }  
+}
 
 wordDisplay.innerHTML = blanks.join(' ')
 guessesLeft.innerHTML = remainingGuesses
 lettersGuessed.innerHTML = wrongLetter.join(' ')
 winCount.innerHTML = wins 
+
+//Press any key to start game
+document.onkeyup = function(event) {
+    game(event.key)
+    hidePrompt.style.visibility = "hidden"
+}
