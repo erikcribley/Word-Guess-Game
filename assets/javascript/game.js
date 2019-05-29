@@ -24,6 +24,11 @@ var winCount = document.getElementById("wins")
 var guessesLeft = document.getElementById("remaining-guesses")
 var lettersGuessed = document.getElementById("wrong-letter")
 var hidePrompt = document.getElementById("hide-prompt")
+var gameOver = document.getElementById("game-over")
+var winImage = document.createElement("img"); 
+    winImage.setAttribute("src", "assets/images/nat20.jpg")
+var lossImage = document.createElement("img"); 
+    lossImage.setAttribute("src", "assets/images/nat1.jpg")
 
 //Choose word at random
 var randomWord = words[Math.floor(Math.random() * words.length)];
@@ -39,6 +44,7 @@ var blanks = [];
 
 //Reset function
 function reset () {
+    gameOver.style.display = "none"
     remainingGuesses = 6;
     wrongLetter = [];
     randomWord = words[Math.floor(Math.random() * words.length)];
@@ -51,30 +57,31 @@ function reset () {
 
 //Game
 function game () {
-document.onkeyup = function(event) {
-    var guess = event.key
-    if (randomWord.indexOf(guess) > -1 ) {
-    for (i = 0; i < randomWord.length; i++) {
-       if (guess === randomWord[i]) { 
-        blanks[i] = guess;
-        lettersRemaining--;
-    } }
-  } else {
-      remainingGuesses--;
-      wrongLetter.push(guess)
-  } 
-  if (lettersRemaining === 0) {
-    wins++;
-    reset()
-    } else if (remainingGuesses=== 0) {
-    reset()
+    document.onkeyup = function(event) {
+        var guess = event.key
+        if (randomWord.indexOf(guess) > -1 ) {
+        for (i = 0; i < randomWord.length; i++) {
+            if (guess === randomWord[i]) { 
+            blanks[i] = guess;
+            lettersRemaining--;
+        } }
+        } else {
+        remainingGuesses--;
+        wrongLetter.push(guess)
+        } 
+        if (lettersRemaining === 0) {
+        wins++;
+        gameOver.appendChild(winImage)
+        reset()
+        } else if (remainingGuesses=== 0) {
+        gameOver.appendChild(lossImage)
+        reset()
     }
-
-wordDisplay.innerHTML = blanks.join(' ')
-guessesLeft.innerHTML = remainingGuesses
-lettersGuessed.innerHTML = wrongLetter.join(' ')
-winCount.innerHTML = wins
-}  
+    wordDisplay.innerHTML = blanks.join(' ')
+    guessesLeft.innerHTML = remainingGuesses
+    lettersGuessed.innerHTML = wrongLetter.join(' ')
+    winCount.innerHTML = wins
+    }      
 }
 
 wordDisplay.innerHTML = blanks.join(' ')
@@ -84,6 +91,6 @@ winCount.innerHTML = wins
 
 //Press any key to start game
 document.onkeyup = function(event) {
-    game(event.key)
-    hidePrompt.style.visibility = "hidden"
+    game()
+    hidePrompt.style.display = "none"
 }
