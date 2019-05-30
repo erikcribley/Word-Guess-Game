@@ -11,12 +11,43 @@ var words = [
     "rogue",
     "sorcerer",
     "wizard",
-    "warlock",]
+    "warlock",
+]
+
+//Create an array of acceptable inputs
+var chars = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+]
 
 //Establish global variables
 var wins = 0;
 var remainingGuesses = 6 
-var wrongLetter = [];
+var wrongLetter = ['-'];
 
 //HTML variables
 var wordDisplay = document.getElementById("word-display")
@@ -39,44 +70,60 @@ var lettersRemaining = randomWord.length
 //Display word with underscores
 var blanks = [];
     for (i = 0; i < randomWord.length; i++) {
-        blanks[i] = ('_')
+        blanks[i] = ('-')
     }
 
 //Reset function
 function reset () {
     gameOver.style.display = "none"
-    remainingGuesses = 6;
-    wrongLetter = [];
     randomWord = words[Math.floor(Math.random() * words.length)];
-    blanks = [];
+    blanks = []
     for (i = 0; i < randomWord.length; i++) {
     blanks[i] = ('_')
     }
+    remainingGuesses = 6
+    wrongLetter = ['-']
     lettersRemaining = randomWord.length
 }
 
-//Game
+//Game function
 function game () {
     document.onkeyup = function(event) {
         var guess = event.key
-        if (randomWord.indexOf(guess) > -1 ) {
+        if (chars.indexOf(guess) < 0) {
+            alert("Choose a lower case letter") 
+        } else if (randomWord.indexOf(guess) > -1 && chars.indexOf(guess > -1)) {
         for (i = 0; i < randomWord.length; i++) {
             if (guess === randomWord[i]) { 
             blanks[i] = guess;
             lettersRemaining--;
         } }
-        } else {
-        remainingGuesses--;
+        } else if (wrongLetter.indexOf('-') > -1) {
+        wrongLetter.pop()
         wrongLetter.push(guess)
-        } 
+        remainingGuesses--;
+        } else {
+        wrongLetter.push(guess)
+        remainingGuesses--;
+        }
+        
+        //win-loss conditions
         if (lettersRemaining === 0) {
-        wins++;
-        gameOver.appendChild(winImage)
-        reset()
-        } else if (remainingGuesses=== 0) {
-        gameOver.appendChild(lossImage)
-        reset()
-    }
+            wins++;
+            gameOver.appendChild(winImage)
+            
+            // reset()
+            } else if (remainingGuesses=== 0) {
+            gameOver.appendChild(lossImage)
+            // reset()
+        
+            }
+
+            console.log(lettersRemaining)
+
+        
+
+    //Display in local scope
     wordDisplay.innerHTML = blanks.join(' ')
     guessesLeft.innerHTML = remainingGuesses
     lettersGuessed.innerHTML = wrongLetter.join(' ')
@@ -84,10 +131,12 @@ function game () {
     }      
 }
 
+//Display in global scope
 wordDisplay.innerHTML = blanks.join(' ')
 guessesLeft.innerHTML = remainingGuesses
 lettersGuessed.innerHTML = wrongLetter.join(' ')
-winCount.innerHTML = wins 
+winCount.innerHTML = wins
+hidePrompt.innerHTML = "Push any key to begin"
 
 //Press any key to start game
 document.onkeyup = function(event) {

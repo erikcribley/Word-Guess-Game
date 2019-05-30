@@ -4,31 +4,37 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <title>WORD GUESS</title>
     </head>
     <body>
-        <h1> Word Guess (definitely not Hangman)</h1>
-            <p id="hide-prompt">
-                Press any key to begin!
-            </p>
-        <div id="word-display">
-        </div>
-        <div id="win-count">
-            <h2>Wins</h2>
+        <header> 
+            <img id="dd-logo" src="assets/images/DD-Logo.png" alt="Dungeons & Dragons Logo">
+            <h1> Word Guess</h1> 
+            <h2>(definitely not Hangman)</h2>
+        </header> 
+            <div id="hide-prompt">
+            </div>
+            <div id="word-display">
+            </div>
+        <div id="info-boxes">
+            <div class="info">
+            <h3>Wins</h3>
             <p id="wins"></p>
-        </div>
-        <div id="guesses-left">
-            <h2>Guesses Remaining</h2>
+            </div>
+            <div class="info">
+            <h3>Guesses Remaining</h3>
             <p id="remaining-guesses"></p>
-        </div>
-        <div id="letters-guessed">
-            <h2>Letters Guessed</h2>
+            </div>
+            <div class="info">
+            <h3>Incorrect Guesses</h3>
             <p id="wrong-letter"></p>
+            </div>
         </div>
-        <div id="game-over">
-        </div>
+            <div id="game-over">
+                
+            </div>
         <script src="assets/javascript/game.js" async defer></script>
     </body>
 </html>
