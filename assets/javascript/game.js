@@ -90,7 +90,7 @@ function game () {
         for (i = 0; i < randomWord.length; i++) {
             if (guess === randomWord[i]) { 
             blanks[i] = guess;
-            lettersRemaining--;
+            lettersRemaining--;    
         } }
         } else if (wrongLetter.indexOf('-') > -1) {
         wrongLetter.pop()
@@ -101,9 +101,9 @@ function game () {
         remainingGuesses--;
         }
         
-        //Win-loss conditions and rest
+        //Win condition and reset
         if (lettersRemaining === 0) {
-            wins++;
+            wins++
             reset()
             } else if (remainingGuesses=== 0) {
             reset()
