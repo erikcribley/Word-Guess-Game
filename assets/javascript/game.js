@@ -55,11 +55,6 @@ var winCount = document.getElementById("wins")
 var guessesLeft = document.getElementById("remaining-guesses")
 var lettersGuessed = document.getElementById("wrong-letter")
 var hidePrompt = document.getElementById("hide-prompt")
-var gameOver = document.getElementById("game-over")
-var winImage = document.createElement("img"); 
-    winImage.setAttribute("src", "assets/images/nat20.jpg")
-var lossImage = document.createElement("img"); 
-    lossImage.setAttribute("src", "assets/images/nat1.jpg")
 
 //Choose word at random
 var randomWord = words[Math.floor(Math.random() * words.length)];
@@ -75,7 +70,6 @@ var blanks = [];
 
 //Reset function
 function reset () {
-    gameOver.style.display = "none"
     randomWord = words[Math.floor(Math.random() * words.length)];
     blanks = []
     for (i = 0; i < randomWord.length; i++) {
@@ -92,7 +86,7 @@ function game () {
         var guess = event.key
         if (chars.indexOf(guess) < 0) {
             alert("Choose a lower case letter") 
-        } else if (randomWord.indexOf(guess) > -1 && chars.indexOf(guess > -1)) {
+        } else if (randomWord.indexOf(guess) > -1) {
         for (i = 0; i < randomWord.length; i++) {
             if (guess === randomWord[i]) { 
             blanks[i] = guess;
@@ -107,21 +101,13 @@ function game () {
         remainingGuesses--;
         }
         
-        //win-loss conditions
+        //Win-loss conditions and rest
         if (lettersRemaining === 0) {
             wins++;
-            gameOver.appendChild(winImage)
-            
-            // reset()
+            reset()
             } else if (remainingGuesses=== 0) {
-            gameOver.appendChild(lossImage)
-            // reset()
-        
+            reset()
             }
-
-            console.log(lettersRemaining)
-
-        
 
     //Display in local scope
     wordDisplay.innerHTML = blanks.join(' ')
