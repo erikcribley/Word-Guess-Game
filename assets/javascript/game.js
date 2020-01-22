@@ -80,10 +80,20 @@ reset = () => {
   lettersRemaining = randomWord.length
 }
 
+//Win-loss function
+winLoss = () => {
+  if (lettersRemaining === 0) {
+    wins++
+    reset()
+  } else if (remainingGuesses === 0) {
+    reset()
+  }
+}
+
 //Game function
 game = () => {
   document.onkeyup = (event) => {
-    var guess = event.key
+    let guess = event.key
     if (chars.indexOf(guess) < 0) {
       alert("Choose a lower case letter") 
     } else if (randomWord.indexOf(guess) > -1) {
@@ -101,14 +111,7 @@ game = () => {
       wrongLetter.push(guess)
       remainingGuesses--;
     }
-
-  //Win condition and reset
-  if (lettersRemaining=== 0) {
-    wins++
-    reset()
-  } else if (remainingGuesses=== 0) {
-    reset()
-  }
+    winLoss()
 
   //Display in local scope
   wordDisplay.innerHTML = blanks.join(' ')
@@ -127,6 +130,6 @@ hidePrompt.innerHTML = "Push any key to begin"
 
 //Press any key to start game
 document.onkeyup = (event) => {
-    game()
-    hidePrompt.style.display = "none"
+  game()
+  hidePrompt.style.display = "none"
 }

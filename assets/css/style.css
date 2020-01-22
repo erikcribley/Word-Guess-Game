@@ -1,58 +1,58 @@
 body {
-    background: black;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
+  background: black;
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 header {
-    margin: 20px auto 50px auto;
-    text-align: center;
+  margin: 20px auto 50px auto;
+  text-align: center;
 }
 
 #dd-logo {
-    width: 200px;
+  width: 200px;
 }
 
 h1 {
-    display: inline-block;
-    font-size: 125px;
+  display: inline-block;
+  font-size: 125px;
 }
 
 #hide-prompt {
-    text-align: center;
-    font-size: 50px;
+  text-align: center;
+  font-size: 50px;
 }
 
 #word-display {
-    font-size: 100px;
-    text-align: center;
-    margin: 20px auto 50px auto;
+  font-size: 100px;
+  text-align: center;
+  margin: 20px auto 50px auto;
 }
 
 #info-boxes {
-    display: block;
-    text-align: center;
-    margin: auto;
+  display: block;
+  text-align: center;
+  margin: auto;
 }
 
 .info {
-    display: inline-block;
-    border-style: solid;
-    border-width: 4px;
-    width: 300px;
-    height: 100px;
-    text-align: center;
-    padding: 20px;
-    margin: 20px auto 25px auto;
+  display: inline-block;
+  border-style: solid;
+  border-width: 4px;
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto 25px auto;
 }
 
 h3 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 #wins,
 #remaining-guesses,
 #wrong-letter {
-    padding: 20px;
-    font-size: 50px;
+  padding: 20px;
+  font-size: 50px;
 }

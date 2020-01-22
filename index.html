@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <title>DUNGEONS & DRAGONS WORD GUESS</title>
-    </head>
-    <body>
-        <header> 
-            <img id="dd-logo" src="assets/images/DD-Logo.png" alt="Dungeons & Dragons Logo">
-            <h1> Word Guess</h1> 
-            <h2>(definitely not Hangman)</h2>
-        </header> 
-            <div id="hide-prompt">
-            </div>
-            <div id="word-display">
-            </div>
-        <div id="info-boxes">
-            <div class="info">
-            <h3>Wins</h3>
-            <p id="wins"></p>
-            </div>
-            <div class="info">
-            <h3>Guesses Remaining</h3>
-            <p id="remaining-guesses"></p>
-            </div>
-            <div class="info">
-            <h3>Incorrect Guesses</h3>
-            <p id="wrong-letter"></p>
-            </div>
-        </div>
-        <script src="assets/javascript/game.js" async defer></script>
-    </body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>DUNGEONS & DRAGONS WORD GUESS</title>
+  </head>
+  <body>
+    <header> 
+      <img id="dd-logo" src="assets/images/DD-Logo.png" alt="Dungeons & Dragons Logo">
+      <h1> Word Guess</h1> 
+      <h2>(definitely not Hangman)</h2>
+    </header> 
+    <div id="hide-prompt"></div>
+    <div id="word-display"></div>
+    <div id="info-boxes">
+      <div class="info">
+        <h3>Wins</h3>
+        <p id="wins"></p>
+      </div>
+      <div class="info">
+        <h3>Guesses Remaining</h3>
+        <p id="remaining-guesses"></p>
+      </div>
+      <div class="info">
+        <h3>Incorrect Guesses</h3>
+        <p id="wrong-letter"></p>
+      </div>
+    </div>
+    <script src="assets/javascript/game.js" async defer></script>
+  </body>
 </html>
